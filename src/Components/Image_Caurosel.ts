@@ -9,7 +9,7 @@ export default class Caurosel {
   private dots: Dot[] = [];
   private dotContainer = document.createElement("div");
   private gap = 50;
-  private interval: number | NodeJS.Timeout | undefined;
+  private interval: ReturnType<typeof setInterval> | undefined;
   private left_button = new DirectionButton("left", "<");
   private right_button = new DirectionButton("right", ">");
   private element = document.createElement("div");
