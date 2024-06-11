@@ -42,7 +42,7 @@ left_button.positionElementLeft(0);
 right_button.positionElementRight(0);
 
 let current = 0;
-let interval: NodeJS.Timeout;
+let interval: number | NodeJS.Timer;
 let gap = 50;
 
 // Function to update dots
