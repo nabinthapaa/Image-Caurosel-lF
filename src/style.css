@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #f1f1f1;
+  padding: 1rem;
+  text-align: center;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 1200px;
+  height: 600px;
+  overflow: hidden;
+  margin-inline: auto;
+  margin-top: 3rem;
+}
+
+#dot-container {
+  text-align: center;
+  margin-top: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dot.active {
+  background-color: #717171;
+}
