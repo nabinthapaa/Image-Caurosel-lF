@@ -23,7 +23,7 @@ header {
   margin-top: 3rem;
 }
 
-#dot-container {
+.dot-container {
   text-align: center;
   margin-top: 10px;
   position: absolute;

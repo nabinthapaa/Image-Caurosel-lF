@@ -9,7 +9,7 @@ export default class Caurosel {
   private dots: Dot[] = [];
   private dotContainer = document.createElement("div");
   private gap = 50;
-  private interval: NodeJS.Timeout | undefined = undefined;
+  private interval: number | NodeJS.Timeout | undefined;
   private left_button = new DirectionButton("left", "<");
   private right_button = new DirectionButton("right", ">");
   private element = document.createElement("div");
@@ -81,13 +81,13 @@ export default class Caurosel {
       if (this.current >= this.wrapped_image.length) {
         this.reset();
       } else {
-        this.scrollRight();
+        this.scrollLeft();
       }
       this.updateDots();
     }, 2000);
   }
 
-  scrollRight() {
+  scrollLeft() {
     this.wrapped_image.forEach((wrapper, i) => {
       wrapper.Element.style.left = `${
         100 + (i - this.current) * (wrapper.Width + this.gap)
@@ -95,7 +95,7 @@ export default class Caurosel {
     });
   }
 
-  scrollLeft() {
+  scrollRight() {
     this.wrapped_image.forEach((wrapper, i) => {
       wrapper.Element.style.left = `${
         100 + (i + this.current) * (wrapper.Width + this.gap)
