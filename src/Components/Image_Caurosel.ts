@@ -14,11 +14,19 @@ export default class Caurosel {
   private right_button = new DirectionButton("right", ">");
   private element = document.createElement("div");
 
+  /**
+   * @param id - Id of the caurosel
+   * @param images - Array of image urls
+   * @param width - Width of the caurosel
+   * @param height - Height of the caurosel
+   * @param delay - Delay between each image change
+   */
   constructor(
     private id: string,
     private images: string[],
     private width: number,
-    private height: number
+    private height: number,
+    private delay: number
   ) {
     this.createCaurosel();
     this.current = 0;
@@ -29,16 +37,26 @@ export default class Caurosel {
     this.element.id = `caurosel-${this.id}`;
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
+    this.element.style.position = "relative";
+    this.element.style.overflow = "hidden";
     this.element.classList.add("caurosel");
+    this.element.style.marginInline = "auto";
+    this.startAutoScroll();
   }
 
+  /**
+   *  Get the caurosel element
+   * @readonly
+   * @type {HTMLDivElement}
+   * @memberof Caurosel
+   */
   get Element(): HTMLDivElement {
     return this.element;
   }
 
   createCaurosel() {
-    for (let i = 0; i < 10; i++) {
-      const wrapper = new Wrapper(1000, 500, i);
+    for (let i = 0; i < this.images.length; i++) {
+      const wrapper = new Wrapper(this.width - 200, this.height - 100, i);
       const image = new _Image(this.images[i], 1);
       wrapper.wrapElement(image.Element);
       wrapper.Element.style.left = `${100 + i * (wrapper.Width + 50)}px`;
@@ -47,6 +65,7 @@ export default class Caurosel {
       const dot = new Dot();
       dot.Element.classList.add("dot");
       this.dots.push(dot);
+      this.dots[0].setActive();
       dot.appendTo(this.dotContainer);
     }
 
@@ -84,7 +103,7 @@ export default class Caurosel {
         this.scrollLeft();
       }
       this.updateDots();
-    }, 2000);
+    }, this.delay);
   }
 
   scrollLeft() {
@@ -98,7 +117,7 @@ export default class Caurosel {
   scrollRight() {
     this.wrapped_image.forEach((wrapper, i) => {
       wrapper.Element.style.left = `${
-        100 + (i + this.current) * (wrapper.Width + this.gap)
+        100 + (i - this.current) * (wrapper.Width + this.gap)
       }px`;
     });
   }

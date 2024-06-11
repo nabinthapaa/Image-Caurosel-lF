@@ -13,12 +13,9 @@ header {
 }
 
 #app {
-  display: flex;
-  justify-content: center;
   position: relative;
-  width: 1200px;
-  height: 600px;
-  overflow: hidden;
+  min-width: 80vw;
+  min-height: 52vh;
   margin-inline: auto;
   margin-top: 3rem;
 }
@@ -31,6 +28,13 @@ header {
   left: 50%;
   transform: translateX(-50%);
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.image-caurosel-flex {
   display: flex;
   justify-content: center;
   align-items: center;
