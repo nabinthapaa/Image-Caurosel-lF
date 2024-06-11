@@ -44,12 +44,6 @@ export default class Caurosel {
     this.startAutoScroll();
   }
 
-  /**
-   *  Get the caurosel element
-   * @readonly
-   * @type {HTMLDivElement}
-   * @memberof Caurosel
-   */
   get Element(): HTMLDivElement {
     return this.element;
   }
