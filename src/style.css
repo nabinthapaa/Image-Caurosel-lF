@@ -12,6 +12,10 @@ header {
   text-align: center;
 }
 
+body {
+  padding-block-end: 4rem;
+}
+
 #app {
   position: relative;
   min-width: 80vw;
