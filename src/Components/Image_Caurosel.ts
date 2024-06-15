@@ -140,7 +140,8 @@ export default class Caurosel {
       clearInterval(this.interval);
       this.current--;
       if (this.current < 0) {
-        this.current = 0;
+        this.current = this.wrapped_image.length - 1;
+        this.scrollRight();
       } else {
         this.scrollRight();
       }
